@@ -1,21 +1,41 @@
-import math
-'''
 
-1,2,3,5
 
-0 0 0 0
-0 1 2 3 
-'''
+def duplicate_hash( arr):
+
+    new_arr = []
+
+    for i in range ( len(arr)-1 ):
+        new_arr[ arr[i] ] +=1
+
+    for i in range ( max(arr)-1 ):
+        if arr[i] > 1:
+            print( i )
+
+
+def duplicate( arr ):
+    '''
+    This checks for a duplicate element in an array 
+    and if the element is duplicated more than once 
+    , we dont have to print it
+    also we are counting how many times there are duplicates in this array 
+    '''
+
+    last_duplicate = 0;
+
+    for i in range( len(arr)-1 ):
+        if ( arr[i] == arr[i+1] & arr[i] != last_duplicate ):
+            print( arr[i] )
+            last_duplicate = arr[i]
 
 def find( arr ):
     n = len(arr)  
     m = max(arr)   
-    res = [0]*[m+1]  
+    res = [0]*(m+1)  
     
     for i in range (m):     
         res[ arr[i] ]+=1  
 
-    for j in range ( m):  
+    for j in range ( m+1):  
         if res[j] == 0:
             print( j )
 
@@ -68,6 +88,6 @@ def find_first_natural_nos( arr ):
 
     return result 
 
-arr = [6,7,9,10,11,14,15,16,17]
-print( find( arr ) )
+arr = [6,7,8,9,9,10,11,11,34]
+print( duplicate_hash( arr ) )
     

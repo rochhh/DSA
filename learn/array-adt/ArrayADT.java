@@ -162,11 +162,33 @@ public class ArrayADT {
     }
 
 
+    public static void duplicate( int []arr ){
+        int lastDuplicate = 0;
+
+        for ( int i=0 ; i< arr.length-1; i++ ){             /*  this second for loop is sus ignore that if you want running code */
+            
+            for ( int j=0 ; j<arr.length-1 ; j++  ){
+                if ( arr[i] == arr[i+1] ){
+                    j = i+1;
+                    while ( arr[j] == arr[i] ) j++;
+                    System.out.println( j-i );
+                    i = j-1;
+                }
+            }
+            
+            
+            if ( arr[i] == arr[i+1] && arr[i] != lastDuplicate ){
+                System.out.println(arr[i]);
+                lastDuplicate = arr[i];
+            }
+        }
+
+    }
+
     public static void main(String[] args) {
-       int []arr = {1,2,123,4,5,6};
+       int []arr = {1,2,2,3,4,5,5,6};
         // System.out.println( reverse(arr) );
-        rev(arr);
-        display(arr);
+        duplicate(arr);
     }
 }
 
