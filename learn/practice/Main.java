@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Main { 
     
     
@@ -26,6 +28,53 @@ public class Main {
         display(arr);
 
     }
+
+    public static int bruteForceMaxSumSubArray( int []arr ){
+        int max = arr[0];
+    
+        for ( int i=0 ; i< arr.length ; i++ ){
+            int currSum = 0;
+
+            for ( int j = i ; j< arr.length ; j++ ){
+                currSum+=arr[j];
+                max = Math.max(max, currSum);
+            }
+        }
+        return max;
+    }
+
+
+    public int maxSubArray(int[] nums) {
+        int curr = nums[0];
+        int max = nums[0];
+
+        for ( int i=1 ; i< nums.length ; i++ ){
+            if ( curr >=0 ){
+                curr += nums[i];
+            }else{
+                curr = nums[i];
+            }
+            if ( curr > max ){
+                max = curr;
+            }
+        }
+    return max;
+    }
+
+    public static boolean containsDuplicate( int []arr ){
+        
+        HashSet<Integer> hash = new HashSet<>();
+
+        for ( int i =0 ; i<arr.length ; i++ ){
+            // searches the hashset to find the duplicate 
+            if ( hash.contains(arr[i]) ) return true;
+            // if not found it will add in the hashset
+            hash.add(arr[i]);
+        }
+        
+        return false;
+    }
+
  
     public static void display( int []arr ){
         for ( int i=0 ; i< arr.length ; i++ ){
@@ -33,9 +82,11 @@ public class Main {
         }
     }
 
+    
+
     public static void main(String[] args) {
-        int []arr = {11,2,3,22,13,4,33,4,12,18};
-        reverseArray(arr);
-        
+        int []arr = {1,2,3,-1,4,8};
+        System.out.println(containsDuplicate(arr)); 
+        // display(arr);
     }
 }
