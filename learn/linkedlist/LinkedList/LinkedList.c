@@ -2,33 +2,50 @@
 #include <stdlib.h>
 
 struct Node{
+ struct Node *prev;
  int data;
  struct Node *next;   
 } *first = NULL ;
 
-void create ( int A[] , int n ){
-    int i;
+void create ( int a[] , int n ){
     struct Node *t , *last;
-    first=(struct Node *)malloc(sizeof(struct Node));
-    first->data=A[0];
-    first->next=NULL;
-    last=first;
+    int i;
 
-    for ( int i=1 ; i<n ; i++ ){
-        t=(struct Node*)malloc(sizeof(struct Node));
-        t->data = A[i];
-        t->next = NULL;
-        last->next=t;
-        last= t;
-    };
-    
+    first = (struct Node*)malloc( sizeof(struct Node) );
+    first->data = a[0];
+    first->prev = first->next = NULL;
+    last = first;
+
+    for ( i=1 ; i<n ; i++ ){
+    t = (struct Node*)malloc( sizeof(struct Node) );
+    t->data = a[i];
+    t->next = last->next;
+    t->prev = last;
+    last->next = t;
+    last = t;
+    }
 }
 
+void display( struct Node *p ){
+    while(p){
+        printf("%d\n", p->data );
+        p = p->next;
+    }
+}
+
+int length( struct Node *p ){
+    int len = 0;
+    while(p){
+        len++;
+        p=p->next;
+    }
+    return len;
+}
 
 int main(int argc, char const *argv[]){
-    
-   struct Node *temp; 
-    int A[]={3,5,7,10,25,8,32,2};
-    create(A,8);
+   int a[] = {1,2,3,4};
+   create(a,4);
+   display(a);
+   printf( "%d\n" , length(first) ); 
     return 0;
     }
