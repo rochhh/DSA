@@ -41,3 +41,51 @@ analysis to be done - given Node of a tree , what is the Height of the Tree ( mi
     * min Height ( hMin ) = log ( n+1) -1 ; this was calculated as ;
                                            we see a pattern b/w nMin && hMax ( n = h+1 && h = n-1 )
                                            following similar approach we use for nMax && hMin , we get the calculated result as seen above 
+
+-----
+
+
+Relationship b/w degree of nodes in a binary tree - deg(0) , deg(1) , deg(2)
+
+    * deg(0) = deg(2) + 1
+
+
+Talking about the relations b/w height and nodes in strict binary tree ( {0,2} childs  )
+
+
+    * nMin = 2h + 1 
+    * nMax = 2 ^ (h+1)-1
+
+    * hMin = log (n+1) -1                               Strict binary trees 
+    * hMax = (n-1)/2 
+
+Leaf nodes ( e ) and non leaf nodes ( i ) relationship 
+
+
+    * e = i + 1   
+
+
+
+------
+
+n-ary trees analysis ( strict )
+
+NOTE- 'n' is the # nodes && 'm' is the degree of it 
+
+    * nMin = mh + 1                                     where h is the height of the tree &&  n -> node 
+
+    * nMax = m ^ ( h + 1 ) / (m -1)
+
+    LEAF NODES ( e ) AND INTERNAL NODES RELATIONSHIP ( m ) ->  
+
+    * e = ( m - 1 ) i + 1 
+
+
+--------------
+
+Array repr of a Binary Tree -> 
+
+let element = i 
+
+    then ; left child = 2*i
+    && right child = (2*i) + 1 
